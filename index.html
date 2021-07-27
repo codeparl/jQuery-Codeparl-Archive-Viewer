@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="archiveViewer" data-ng-controller="archiveCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeparl jQuery Archive Viewer</title>
+
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/codeparl-jquery-archive-viewer.min.css">
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+
+</head>
+
+<body class="bg-light p-0 m-0 ">
+    <div class="container  my-5 ">
+        <div class="archive-content w-75"></div>
+    </div>
+
+
+
+
+    <script src="js/libs/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="js/codeparl-jquery-archive-viewer.js"></script>
+
+    <script>
+        $('.archive-content').codeparlArchiveViewer({
+
+        });
+    </script>
+
+</body>
+
+</html>
