@@ -44,41 +44,38 @@
             if (shouldContinue) {
                 $thisButton.addClass("disabled");
                 $parent.append($('<div class="linePreloader"></div>'));
+                $.ajax({
+                    url: options.serverPath,
+                    method: "GET",
+                    dataType: "json",
+                    data: {
+                        "zip-name": zipName + ".zip",
+                        "file-index": index,
+                        "file-type": type,
+                        "file-name": $thisButton.text(),
+                        "file-path": $parent.data("path"),
+                        "sub-list": 1,
+                    },
+                }).then(function(response) {
 
-                setTimeout(function() {
-                    $.ajax({
-                        url: options.serverPath,
-                        method: "GET",
-                        dataType: "json",
-                        data: {
-                            "zip-name": zipName + ".zip",
-                            "file-index": index,
-                            "file-type": type,
-                            "file-name": $thisButton.text(),
-                            "file-path": $parent.data("path"),
-                            "sub-list": 1,
-                        },
-                    }).then(function(response) {
+                    self.trigger('sub-content-loaded');
+                    $thisButton.removeClass('disabled');
+                    $('.linePreloader').remove();
 
-                        self.trigger('sub-content-loaded');
-                        $thisButton.removeClass('disabled');
-                        $('.linePreloader').remove();
+                    if (type === "folder") {
+                        $parent.data("open", true);
+                        $parent.find("i").eq(0).toggleClass("fa-minus fa-plus");
+                        $parent.find("i").eq(1).toggleClass("fa-folder-open fa-folder");
 
-                        if (type === "folder") {
-                            $parent.data("open", true);
-                            $parent.find("i").eq(0).toggleClass("fa-minus fa-plus");
-                            $parent.find("i").eq(1).toggleClass("fa-folder-open fa-folder");
-
-                            $(response.content).slideDown(100)
-                                .insertAfter($thisButton)
-                            $parent.data("open", true);
-                            return;
-                        } else {
-                            downloadContent(response, zipName, index, options);
-                            previewContent(response, options);
-                        }
-                    });
-                }, 2000);
+                        $(response.content).slideDown(100)
+                            .insertAfter($thisButton)
+                        $parent.data("open", true);
+                        return;
+                    } else {
+                        downloadContent(response, zipName, index, options);
+                        previewContent(response, options);
+                    }
+                });
 
             } //if
         });
