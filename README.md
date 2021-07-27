@@ -1,6 +1,6 @@
 # CodeParl jQuery Archive Viewer
 
-CodeParl jQuery Archive Viewer for bootstrap 4 allows you to view 
+CodeParl jQuery Archive Viewer for bootstrap 4 allows you to view
 the content of an archive (.zip) file stored on your server.
 This plugin display files in a hierarchical structure similar
 to the one found on Windows Explorer.
@@ -28,7 +28,7 @@ This is a jQuery plugin written by Hassan Mugabo [aka @codeparl]
 
 ![screenshot 1](screenshot1.png)
 
-![screenshot 2](screenshot1.png)
+![screenshot 2](screenshot2.png)
 
 ## Setup Example
 
